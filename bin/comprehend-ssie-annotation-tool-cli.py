@@ -55,6 +55,7 @@ def upload_object(content, path, s3_client):
 
 def upload_directory(path, bucket_name, s3_path_prefix, s3_client):
     for root, dirs, files in os.walk(path):
+        root = root.replace("\\", "/")
         for file in files:
             extra_args = {}
             content_type = mimetypes.guess_type(file)[0]
